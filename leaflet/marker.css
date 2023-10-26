@@ -1,0 +1,24 @@
+.leaflet-popup-content-wrapper{
+    padding: 0;
+    overflow: hidden;
+}
+.leaflet-popup-content-wrapper .leaflet-popup-content{
+    margin: 0;
+}
+.leaflet-popup-content-wrapper h4{
+    padding: 20px;
+    text-align: center;
+    background: #016e9f;
+    color: #fff;
+    font-size: 16px;
+}
+.leaflet-popup-content-wrapper p{
+    padding: 0 16px;
+    font-size: 14px;
+    margin-bottom:14px;
+}
+.leaflet-popup-content-wrapper img{
+    padding: 0 16px;
+    font-size: 5px;
+    margin-bottom:14px;
+}
