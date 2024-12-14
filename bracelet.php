@@ -6,7 +6,7 @@ include './models/bdmodel.php';
 <?php
 
 if(!(isset($_SESSION['nom']))){
-header("Location: login.php");
+header("Location: login");
 }
 
 ?>
@@ -15,7 +15,7 @@ header("Location: login.php");
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Listes bracelets</title>
+	<title>Bracelets</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
@@ -47,7 +47,7 @@ header("Location: login.php");
 <body>
 	<div class="pre-loader">
 		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="eleve_photo/logo.png"  style="height:20%; width: 20%; text-align:center; margin-left:320px;" alt=""></div>
+			<div class="loader-logo"><img src="eleve_photo/logo.jpeg"   style="height:100%; width: 100%; text-align:center; " alt=""></div>
 			<div class='loader-progress' id="progress_div">
 				<div class='bar' id='bar1'></div>
 			</div>
@@ -103,7 +103,7 @@ header("Location: login.php");
 				<!-- Export Datatable End -->
 
 			</div>
-			
+			<?php include 'include/design/footer.php';?>
 		</div>
 	</div>
 	<?php

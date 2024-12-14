@@ -13,34 +13,39 @@
 		<div class="menu-block customscroll">
 			<div class="sidebar-menu">
 				<ul id="accordion-menu">
-					
-					<li>
-						<a href="eleve.php" class="dropdown-toggle no-arrow">
-							<span class="micon icon-copy dw dw-user1"></span><span class="mtext">Les élèves</span>
+
+				<li>
+						<a href="index" class="dropdown-toggle no-arrow">
+							<span class="micon icon-copy dw dw-home"></span><span class="mtext">Acceuil</span>
 							
 						</a>
 					</li>
+					
 					<li>
-						<a href="bracelet.php" class="dropdown-toggle no-arrow">
+						<a href="eleve" class="dropdown-toggle no-arrow">
+							<span class="micon icon-copy dw dw-user1"></span><span class="mtext">Les élèves</span>
+						</a>
+					</li>
+					<li>
+						<a href="bracelet" class="dropdown-toggle no-arrow">
 							<span class="micon icon-copy dw dw-analytics-19"></span><span class="mtext">Bracelet</span>
 						</a>
 					</li>
 					<li>
-						<a href="gps_eleve.php" class="dropdown-toggle no-arrow">
+						<a href="gps_eleve" class="dropdown-toggle no-arrow">
 							<span class="micon icon-copy dw dw-user-11"></span><span class="mtext">Bracelet / Elèves</span>
 							
 						</a>
 					</li>
 					<li>
-						<a href="position.php" class="dropdown-toggle no-arrow">
+						<a href="position" class="dropdown-toggle no-arrow">
 							<span class="micon icon-copy dw dw-pin-1"></span><span class="mtext">Position</span>
 							
 						</a>
 					</li>
 					<li>
-						<a href="logout.php" class="dropdown-toggle no-arrow">
+						<a href="logout" class="dropdown-toggle no-arrow">
 							<span class="micon icon-copy dw dw-logout1"></span><span class="mtext">Se déconnecter</span>
-							
 						</a>
 					</li>
 					<li>

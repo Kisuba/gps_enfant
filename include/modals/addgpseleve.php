@@ -138,4 +138,89 @@
 									</div>
 								</div>
 							</div>
-						
+
+							<!-- large modal pour le map-->
+							<div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg modal-dialog-centered">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="myLargeModalLabel">Maps</h4>
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+										</div>
+										<div class="modal-body" id="map" style="width:100%!important; height:500px">
+
+										<div class="btn-group" id="dropdown" style="position: absolute;
+			                top: 10px;
+			                left: 60px;
+			                z-index: 1000;
+			                font-weight: 50px;
+			                ">
+							<button type="button" class="btn btn-primary btn-sm" id="btnitineraire" style="width: 220px;font-weight: 800;color: white; text-decoration: none;"  aria-expanded="false">
+							<i class="fa fa-th-list"></i>
+			                Son itinéraire
+							</button>
+						 </div>
+
+						 <!-- list intineraire -->
+						 <div class="col-sm-2" id="list_itineraire" style="position: absolute;
+									background-color: white;
+									top: 50px;
+									left: 60px;
+									z-index: 1000;
+									font-weight: 600px;
+									display:none;
+									">
+                      <!-- checkbox -->
+                      <div class="form-group">
+					  </br>
+					 
+                   
+                        <div class="custom-control custom-checkbox">
+                        	<?php 
+                  /*include './models/bdmodel.php';*/
+										 $model = new Eleve();
+										 	$rows = $model->fetch_elve_in_brac();
+											
+												  if(!empty($rows)){
+													foreach ($rows as $row) {
+											
+													$id = $row["id"];
+													$nom = $row["nom"];
+												  
+										?>
+
+											<input class="custom-control-input" type="checkbox" onchange='trajet(this)' id="Aurel"/>
+                          <label for="Aurel"  class="custom-control-label"><b><?php echo $nom ;?></b></label>
+									
+									<?php }} ?>
+
+                        	
+                          
+                        </div>
+                       
+                      </div>
+             			</div>
+													<!---->
+											<!-- lat, long -->
+											<div class="leaflet-control map-coordinate" style=" 
+												color: black; 
+												position: absolute; 
+												bottom: 20px; 
+												left: 30px;
+												background-color: white;
+												border-radius: 0px;
+												font-size: 1em;
+												padding: 5px 15px;">
+								
+													</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+
+					
+							

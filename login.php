@@ -39,10 +39,10 @@
 				<div class="col-md-6 col-lg-12">
 					<div class="login-box bg-white box-shadow border-radius-10">
 						<div class="login-title">
-							<h2 class="text-center text-primary">Login</h2>
+							<h2 class="text-center text-Secondary">Login</h2>
 						</div>
 						<form action="" method="post">
-							<div style="text-align: center;"><img class="mb-4"  src="eleve_photo/logo.png" src="user.png" alt="" style='width:90px; height: 90px; border-radius: 0px;'/></div>
+							<div style="text-align: center;"><img class="mb-4"  src="eleve_photo/logo.jpeg" src="user.png" alt="" style='width:200px; height: 200px; border-radius: 0px;'/></div>
 							<input type="hidden" id="action" value="login">
 							<div class="input-group custom">
 								<input type="text" class="form-control form-control-lg" id="username" placeholder="Username" required=""/>
@@ -56,6 +56,9 @@
 									<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
 								</div>
 							</div>
+
+							<div id="error-message" style="color: red; display: none; text-align:center;"></div>
+
 							<div class="row pb-30">
 								<div class="col-5">
 									
@@ -101,12 +104,13 @@
 			type:'post',
 			data:data,
 			success:function(response){
-				
+				$('#error-message').hide();
+
 				if(response == "Login réussi !"){
-					window.location.href = "eleve.php";
+					window.location.href = "index";
 				}else{
-					alert(response);
-					window.location.reload();
+					$('#error-message').text(response).show();
+					//window.location.reload();
 				}
 			}
 		});

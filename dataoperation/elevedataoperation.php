@@ -23,7 +23,7 @@ if($_POST['action'] == 'fetch'){
 			'Postnom'=>$postnom,
 			'Prenom'=>$prenom,
 			'Adresse'=>$addr,
-			'Photo'=>"<img style='width:60px; height: 60px; border-radius: 360px;' src='../eleve_photo/$photo'>",
+			'Photo'=>"<img style='width:60px; height: 60px; border-radius: 360px;' src='./eleve_photo/$photo'>",
 			'Action'=>"<div class='dropdown'>
 											<a class='btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle' href='#'' role='button' data-toggle='dropdown'>
 												<i class='dw dw-more'></i>
@@ -55,7 +55,7 @@ if($_POST['action'] == 'insert'){
 	 $adresse = htmlspecialchars($_POST['adresse']);
 	
 	 $image=$_FILES['photo']['name'];
-   $image_tmp=$_FILES['photo']['tmp_name'];
+     $image_tmp=$_FILES['photo']['tmp_name'];
 
   move_uploaded_file($image_tmp, "../eleve_photo/$image");
  	$model->insert($nom, $postnom, $prenom, $adresse, $image);
@@ -66,6 +66,7 @@ if($_POST['action'] === 'getelevebyid'){
 }
 
 if($_POST['action'] === 'delete'){
+	$model->remove_photo($id);
  	$model->delete($_POST);
 }
 
@@ -77,12 +78,21 @@ if($_POST['action'] == 'update'){
 	$prenom = $_POST['l_prenom'];
 	$adresse = $_POST['l_adresse'];
 	
+	if(!empty($_FILES['new_photo']['name'])){
+	 // Étape 1: Récupérer le nom de l'ancienne image
+	 $model->remove_photo($id);
+	 
+
 	$image = $_FILES['new_photo']['name'];
 	$image_tmp=$_FILES['new_photo']['tmp_name'];
 
-  move_uploaded_file($image_tmp, "../eleve_photo/$image");
+  	move_uploaded_file($image_tmp, "../eleve_photo/$image");
  	$model->update($id,$nom,$postnom,$prenom,$adresse,$image);
-
+	} else{
+	
+	$image = '';  	
+ 	$model->update($id,$nom,$postnom,$prenom,$adresse,$image);
+	}
 }
 
 ?>

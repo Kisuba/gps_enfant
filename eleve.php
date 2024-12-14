@@ -6,7 +6,7 @@ include './models/bdmodel.php';
 <?php
 
 if(!(isset($_SESSION['nom']))){
-header("Location: login.php");
+header("Location: login");
 }
 
 ?>
@@ -15,7 +15,7 @@ header("Location: login.php");
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['nom'];?></title>
+	<title>Les Eleves</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
@@ -47,7 +47,7 @@ header("Location: login.php");
 <body>
 	<div class="pre-loader">
 		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="eleve_photo/logo.png"  style="height:20%; width: 20%; text-align:center; margin-left:320px;" alt=""></div>
+			<div class="loader-logo"><img src="eleve_photo/logo.jpeg"   style="height:100%; width: 100%; text-align:center; " alt=""></div>
 			<div class='loader-progress' id="progress_div">
 				<div class='bar' id='bar1'></div>
 			</div>
@@ -105,7 +105,7 @@ header("Location: login.php");
 				<!-- Export Datatable End -->
 
 			</div>
-			
+			<?php include 'include/design/footer.php';?>
 		</div>
 	</div>
 	<!-- js -->
@@ -171,7 +171,7 @@ header("Location: login.php");
 		processData:false,
 		success:function(data)
 		{
-			$('#table_eleve').DataTable().destroy();
+			 $('#table_eleve').DataTable().destroy();
 			 datatypeeleve();
 			 $('#modifeleve')[0].reset();
 			 $('#Modif-modal').modal('hide');
@@ -234,14 +234,19 @@ function updateeleve(id){
 
       var json = JSON.parse(data);
 
-      $('#l_id').val(json.id);
-     $('#l_nom').val(json.nom);
-     $('#l_postnom').val(json.postnom);
-      $('#l_prenom').val(json.prenom);
-      $('#l_adresse').val(json.adresse);
-      $('#l_photo').val(json.photo);
+    $('#l_id').val(json.id);
+    $('#l_nom').val(json.nom);
+    $('#l_postnom').val(json.postnom);
+    $('#l_prenom').val(json.prenom);
+    $('#l_adresse').val(json.adresse);
+   
+	var baseUrl = "eleve_photo/"; // Remplacez par l'URL de base correcte
+    var imageUrl = baseUrl + json.photo; // Concaténez l'URL de base avec le nom de la photo
+            
+    $('#imagePreview').attr('src', imageUrl); // Mettez à jour la source de l'image
 
-      $('#Modif-modal').modal('show');
+
+    $('#Modif-modal').modal('show');
 
     })
   }
@@ -275,7 +280,7 @@ $('#deleteeleve').submit(function(event){
 </script>
 <style>
 	div.flex-wrap{
-		positinon:relative;
+		position:relative;
 		float: left;
 		margin-left: 10px;
 	}

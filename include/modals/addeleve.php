@@ -23,11 +23,27 @@
               <div class="input-group custom">
                 <input type="text" class="form-control form-control-lg" name="adresse" id="adresse" placeholder="Adresse" required=""/>
                 
-              </div><div class="input-group custom">
-                <input type="file" class="form-control form-control-lg" name="photo" id="photo" required=""/>
+              </div>
+              <div class="input-group custom" style="width:200px;height:200px; box-shadow:0px 0px 20px 5px rgba(100,100,100,0.1);">
+                <input type="file" class="form-control form-control-lg" name="photo" id="photo" accept="image/*" required="" style="display:none;"/>
+                <label for="photo" id="photo-preview">
+                  <img src="include/icons/dummy.jpg" alt="" style="width:200px;height:200px;object-fit:cover;">
+                  <div style="position:relative;
+                              height:40px;
+                              margin-top:-40px;
+                              background:rgba(0,0,0,0.5);
+                              text-align:center;
+                              line-height:40px;
+                              font-size:13px;
+                              color:#f5f5f5;
+                              font-weight:600;">
+                    <span style="font-size:10px">Photo de l'élève</span>
+                  </div>
+                </label>
                 
               </div>
               <input type="hidden" name="action" id="action" value="insert" />
+
               <div class="row">
                 <div class="col-sm-12">
                   <div class="input-group mb-0">
@@ -59,26 +75,42 @@
                     <div class="modal-body">
                       <form id = "modifeleve" method="post" enctype="multipart/form-data">
               
-              <input type="text" name="l_id" id="l_id"/>
+              <input type="hidden" name="l_id"  id="l_id"/>
               <div class="input-group custom">
-                <input type="text" class="form-control form-control-lg" name="l_nom" id="l_nom"  required=""/>
+                <input type="text" class="form-control form-control-lg" name="l_nom" id="l_nom" placeholder="Nom"  required=""/>
                 
               </div>
               <div class="input-group custom">
-                <input type="text" class="form-control form-control-lg" name="l_postnom" id="l_postnom"  required=""/>
+                <input type="text" class="form-control form-control-lg" name="l_postnom" id="l_postnom" placeholder="Postnom"  required=""/>
                 
               </div>
               <div class="input-group custom">
-                <input type="text" class="form-control form-control-lg" name="l_prenom" id="l_prenom"  required=""/>
+                <input type="text" class="form-control form-control-lg" name="l_prenom" id="l_prenom" placeholder="Prenom"  required=""/>
                 
               </div>
               <div class="input-group custom">
-                <input type="text" class="form-control form-control-lg" name="l_adresse" id="l_adresse"  required=""/>
+                <input type="text" class="form-control form-control-lg" name="l_adresse" id="l_adresse" placeholder="Adresse" required=""/>
                 
               </div>
-             <div class="input-group custom">
-                <input type="file" class="form-control form-control-lg" name="new_photo" id="new_photo"  />
-                
+
+            
+             <div class="input-group custom" style="width:200px;height:200px; box-shadow:0px 0px 20px 5px rgba(100,100,100,0.1);">
+                          
+                <input type="file" class="form-control form-control-lg" name="new_photo" id="new_photo" accept="image/*"  style="display:none;"/>
+                <label for="new_photo" id="new_photo-preview">
+                  <img id="imagePreview" src="" alt="Photo" style="width:200px;height:200px;object-fit:cover;">
+                  <div style="position:relative;
+                              height:40px;
+                              margin-top:-40px;
+                              background:rgba(0,0,0,0.5);
+                              text-align:center;
+                              line-height:40px;
+                              font-size:13px;
+                              color:#f5f5f5;
+                              font-weight:600;">
+                    <span style="font-size:10px">Photo de l'élève</span>
+                  </div>
+                  </label>
               </div>
              
               <div class="row">
@@ -128,4 +160,37 @@
                   </div>
                 </div>
               </div>
+<script>
+
+function previewBeforeUpload(id){
+  document.querySelector("#"+id).addEventListener("change",function(e){
+    if(e.target.files.length == 0){
+      return;
+    }
+    let file = e.target.files[0];
+    let url = URL.createObjectURL(file);
+    document.querySelector("#"+id+"-preview div").innerText = file.name;
+    document.querySelector("#"+id+"-preview img").src = url;
+  });
+}
+
+previewBeforeUpload("photo");
+previewBeforeUpload("new_photo");
+
+
+var imageName = document.getElementById("newx_photo").value;
+
+// Définir la base de l'URL de l'image
+var baseUrl = "eleve_photo/";
+
+// Construire l'URL complète en ajoutant le nom de l'image
+var imageUrl = baseUrl + imageName;
+
+// Récupérer l'élément img par son ID
+var imageElement = document.getElementById("imagePreview");
+
+// Affecter l'URL construite à la source de l'image
+imageElement.src = imageUrl;
+
+</script>
             

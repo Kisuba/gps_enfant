@@ -6,24 +6,28 @@ session_start();
 <?php
 
 if(!(isset($_SESSION['nom']))){
-header("Location: login.php");
+header("Location: login");
 }
 
 ?>
+<?php include 'include/fonction.php';?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Listes bracelets / élèves</title>
+	<title>Bracelets / élèves</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
-
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- mini map -->
+    <link rel="stylesheet" type="text/css" href="leaflet/Leaflet-MiniMap-master/src/Control.MiniMap.css" />
 
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -47,7 +51,7 @@ header("Location: login.php");
 <body>
 	<div class="pre-loader">
 		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="eleve_photo/logo.png"  style="height:20%; width: 20%; text-align:center; margin-left:320px;" alt=""></div>
+			<div class="loader-logo"><img src="eleve_photo/logo.jpeg"   style="height:100%; width: 100%; text-align:center; " alt=""></div>
 			<div class='loader-progress' id="progress_div">
 				<div class='bar' id='bar1'></div>
 			</div>
@@ -108,7 +112,7 @@ header("Location: login.php");
 				<!-- Export Datatable End -->
 
 			</div>
-			
+			<?php include 'include/design/footer.php';?>
 		</div>
 	</div>
 	<!-- js -->
@@ -136,6 +140,11 @@ header("Location: login.php");
 	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
 	<!-- Datatable Setting js -->
 	<script src="vendors/scripts/datatable-setting.js"></script>
+
+	<!-- leaflet -->
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script src="./leaflet/Leaflet-MiniMap-master/src/Control.MiniMap.js"></script>
+	<script src="leaflet/leaflet.js"></script>
 	<script>
     $(document).ready(function(){
     //$('#table_eleve').DataTable().destroy();
@@ -248,10 +257,54 @@ $('#delete_id_gpseleve').submit(function(event){
       });
      
     } 
+
+	var marker;
+	
+	// Supprimer tous les marqueurs de la carte
+	function effacerMarqueurs() {
+	mymap.eachLayer(function (layer) {
+		if (layer instanceof L.Marker) {
+			mymap.removeLayer(layer);
+		}
+	});
+	}
+
+	function voir_eleve_gps(nom,postnom,prenom,photo,lat,long){
+		
+		
+		effacerMarqueurs();
+
+		var marker = L.marker([lat, long]).addTo(mymap);
+		var toolltip = L.tooltip({permanent:true}).setContent(nom +"  "+postnom);
+		marker.bindTooltip(toolltip);
+		L.popup({closeButton: false})
+				.setLatLng([lat, long])
+				.setContent(
+				
+					"<h4>Elèves</h4>" + "<p>Nom : "+"<b>"+nom+"</b>" + "</br>Nom : "+ "<b>Postnom : </b>"+"<b>"+postnom+"</b>"+"</br>Latitute : "+"<b>"+lat+"</b>"+"</br>"+"Longitude : "+"<b>"+long+"</b></p>"
+				
+				);
+
+		
+
+		$('#bd-example-modal-lg').modal('show');
+	}
+		//
+				
+		//		L.popup({closeButton: false})
+		//		.setLatLng([lat, long])
+		//		.setContent(
+		//		
+		//			"<h4>Ports</h4>" + "<p>Type : "+"<b>"+type+"</b>" + "</br>Nom : "+ "<b>Port </b>"+"<b>"+nom+"</b>"+"</br>Latitute : "+"<b>"+lat+"</b>"+"</br>"+"Longitude : "+"<b>"+long+"</b></p>"
+				
+		//		)
+		//		.openOn(mymap);*/
+					
+	
 </script>
 <style>
 	div.flex-wrap{
-		positinon:relative;
+		position:relative;
 		float: left;
 		margin-left: 10px;
 	}

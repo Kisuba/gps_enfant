@@ -1,0 +1,10 @@
+
+    #turn on .htaccess config
+    RewriteEngine on 
+    #hide all php extension
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    
+    RewriteRule ^(.*)$ $1.php [NC,L]

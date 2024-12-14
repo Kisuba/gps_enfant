@@ -28,7 +28,7 @@ class Login extends Bdmodel
 						
 						$_SESSION['nom'] = $username;
 					} else {
-						echo "Login échoué. Veuillez vérifier vos informations de connexion.";
+						echo "UserName ou Mot de passe incorrect.";
 					}
 				} else {
 					echo "Erreur d'exécution de la requête.";
