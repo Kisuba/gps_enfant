@@ -24,7 +24,7 @@
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 						<a class="dropdown-item" href="#"><i class="dw dw-user1"></i> Profile</a>
-						<a class="dropdown-item" href="logout.php"><i class="dw dw-logout"></i> Se deconnecter</a>
+						<a  href="#" class="dropdown-item" data-toggle="modal" data-target="#confirmation-modal" type="button"><i class="dw dw-logout"></i> Se deconnecter</a>
 					</div>
 				</div>
 			</div>
@@ -106,5 +106,25 @@
 		</div>
 	</div>
 	</div>
+
+	<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-body text-center font-18">
+											<h4 class="padding-top-30 mb-30 weight-500">Voulez-vous vous déconnecter ?</h4>
+											<div class="padding-bottom-30 row" style="max-width: 170px; margin: 0 auto;">
+												<div class="col-6">
+													<button type="button" class="btn btn-secondary border-radius-100 btn-block confirmation-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
+													Non
+												</div>
+												<div class="col-6">
+													<button type="button" class="btn btn-primary border-radius-100 btn-block confirmation-btn" ><a href="logout"><i class="fa fa-check" style="color: white;"></i></a></button>
+													Oui
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 
 	

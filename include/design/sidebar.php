@@ -44,7 +44,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="logout" class="dropdown-toggle no-arrow">
+						<a href="#" class="dropdown-toggle no-arrow"  data-toggle="modal" data-target="#confirmation-modal" type="button">
 							<span class="micon icon-copy dw dw-logout1"></span><span class="mtext">Se déconnecter</span>
 						</a>
 					</li>
@@ -57,3 +57,23 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-body text-center font-18">
+											<h4 class="padding-top-30 mb-30 weight-500">Voulez-vous vous déconnecter ?</h4>
+											<div class="padding-bottom-30 row" style="max-width: 170px; margin: 0 auto;">
+												<div class="col-6">
+													<button type="button" class="btn btn-secondary border-radius-100 btn-block confirmation-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
+													Non
+												</div>
+												<div class="col-6">
+													<button type="button" class="btn btn-primary border-radius-100 btn-block confirmation-btn" ><a href="logout"><i class="fa fa-check" style="color: white;"></i></a></button>
+													Oui
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
